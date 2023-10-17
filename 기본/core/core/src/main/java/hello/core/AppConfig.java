@@ -16,19 +16,25 @@ import org.springframework.stereotype.Controller;
 public class AppConfig {
 
     @Bean
-    public MemberService memberService(){
+    public MemberService memberService() {
+        System.out.println("AppConfig.memberService");
         return new MemberServiceImpl(memberRepository());
     }
+
     @Bean
     public MemoryMemberRepository memberRepository() {
+        System.out.println("AppConfig.memberRepository");
         return new MemoryMemberRepository();
     }
+
     @Bean
-    public OrderService orderService(){
+    public OrderService orderService() {
+        System.out.println("AppConfig.orderService");
         return new OrderServiceImpl(memberRepository(), discountPolicy());
     }
+
     @Bean
-    public DiscountPolicy discountPolicy(){
+    public DiscountPolicy discountPolicy() {
         return new RateDiscountPolicy();
     }
 }
