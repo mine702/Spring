@@ -23,12 +23,12 @@ public class MyLogger {
 
     @PostConstruct
     public void init() {
-        String uuid = UUID.randomUUID().toString();
-        System.out.println("[ " + uuid + " ] init" + this);
+        uuid = UUID.randomUUID().toString();
+        System.out.println("[ " + uuid + " ] init " + this);
     }
 
     @PreDestroy
     public void close() {
-        System.out.println("[ " + uuid + " ] close" + this);
+        System.out.println("[ " + uuid + " ] close " + this);
     }
 }
