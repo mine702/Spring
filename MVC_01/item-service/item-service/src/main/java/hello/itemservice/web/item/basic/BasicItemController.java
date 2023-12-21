@@ -68,19 +68,19 @@ public class BasicItemController {
      * @ModelAttribute 자체 생략 가능
      * model.addAttribute(item) 자동 추가
      */
-    @PostMapping("/add")
+//    @PostMapping("/add")
     public String addItemV4(Item item) {
         itemRepository.save(item);
         return "basic/item";
     }
-    
+
     /**
-     * 테스트용 데이터 추가
+     * PRG - Post/Redirect/Get
      */
-    @PostConstruct
-    public void init() {
-        itemRepository.save(new Item("testA", 10000, 10));
-        itemRepository.save(new Item("testB", 20000, 20));
+    @PostMapping("/add")
+    public String addItemV5(Item item) {
+        itemRepository.save(item);
+        return "redirect:/basic/items/" + item.getId();
     }
 
     @GetMapping("/{itemId}")
@@ -88,5 +88,20 @@ public class BasicItemController {
         Item item = itemRepository.findById(itemId);
         model.addAttribute("item", item);
         return "basic/item";
+    }
+
+    @PostMapping("/{itemId}/edit")
+    public String edit(@PathVariable Long itemId, @ModelAttribute Item item) {
+        itemRepository.update(itemId, item);
+        return "redirect:/basic/items/{itemId}";
+    }
+
+    /**
+     * 테스트용 데이터 추가
+     */
+    @PostConstruct
+    public void init() {
+        itemRepository.save(new Item("testA", 10000, 10));
+        itemRepository.save(new Item("testB", 20000, 20));
     }
 }
