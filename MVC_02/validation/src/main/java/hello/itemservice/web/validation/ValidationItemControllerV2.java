@@ -102,7 +102,6 @@ public class ValidationItemControllerV2 {
         }
 
         //특정 필드 예외가 아닌 전체 예외
-        //특정 필드 예외가 아닌 전체 예외
         if (item.getPrice() != null && item.getQuantity() != null) {
             int resultPrice = item.getPrice() * item.getQuantity();
             if (resultPrice < 10000) {
