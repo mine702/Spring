@@ -36,8 +36,7 @@ public class ItemController {
     @PostMapping("/items/new")
     public String saveItem(@ModelAttribute ItemForm form, RedirectAttributes redirectAttributes) throws IOException {
         UploadFile attachFile = fileStore.storeFile(form.getAttachFile());
-        List<UploadFile> storeImageFiles =
-                fileStore.storeFiles(form.getImageFiles());
+        List<UploadFile> storeImageFiles = fileStore.storeFiles(form.getImageFiles());
         //데이터베이스에 저장
         Item item = new Item();
         item.setItemName(form.getItemName());
@@ -57,24 +56,19 @@ public class ItemController {
 
     @ResponseBody
     @GetMapping("/images/{filename}")
-    public Resource downloadImage(@PathVariable String filename) throws
-            MalformedURLException {
+    public Resource downloadImage(@PathVariable String filename) throws MalformedURLException {
         return new UrlResource("file:" + fileStore.getFullPath(filename));
     }
 
     @GetMapping("/attach/{itemId}")
-    public ResponseEntity<Resource> downloadAttach(@PathVariable Long itemId)
-            throws MalformedURLException {
+    public ResponseEntity<Resource> downloadAttach(@PathVariable Long itemId) throws MalformedURLException {
         Item item = itemRepository.findById(itemId);
         String storeFileName = item.getAttachFile().getStoreFileName();
         String uploadFileName = item.getAttachFile().getUploadFileName();
-        UrlResource resource = new UrlResource("file:" +
-                fileStore.getFullPath(storeFileName));
+        UrlResource resource = new UrlResource("file:" + fileStore.getFullPath(storeFileName));
         log.info("uploadFileName={}", uploadFileName);
-        String encodedUploadFileName = UriUtils.encode(uploadFileName,
-                StandardCharsets.UTF_8);
-        String contentDisposition = "attachment; filename=\"" +
-                encodedUploadFileName + "\"";
+        String encodedUploadFileName = UriUtils.encode(uploadFileName, StandardCharsets.UTF_8);
+        String contentDisposition = "attachment; filename=\"" + encodedUploadFileName + "\"";
         return ResponseEntity.ok()
                 .header(HttpHeaders.CONTENT_DISPOSITION, contentDisposition)
                 .body(resource);

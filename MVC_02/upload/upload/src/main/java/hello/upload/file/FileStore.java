@@ -20,8 +20,7 @@ public class FileStore {
         return fileDir + filename;
     }
 
-    public List<UploadFile> storeFiles(List<MultipartFile> multipartFiles)
-            throws IOException {
+    public List<UploadFile> storeFiles(List<MultipartFile> multipartFiles) throws IOException {
         List<UploadFile> storeFileResult = new ArrayList<>();
         for (MultipartFile multipartFile : multipartFiles) {
             if (!multipartFile.isEmpty()) {
