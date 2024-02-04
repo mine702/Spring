@@ -1,5 +1,6 @@
 package jpabook.jpashop;
 
+import jakarta.persistence.EntityManager;
 import jpabook.jpashop.domain.Member;
 import jpabook.jpashop.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
@@ -17,16 +18,18 @@ class JpashopApplicationTests {
 
     private final MemberRepository memberRepository;
 
+    private final EntityManager em;
+
     @Test
     @Transactional
     public void testMember() {
         Member member = new Member();
-        member.setUsername("memberA");
-        Long savedId = memberRepository.save(member);
-        Member findMember = memberRepository.find(savedId);
+        member.setName("memberA");
+        memberRepository.save(member);
+        Member findMember = em.find(Member.class, member);
         Assertions.assertThat(findMember.getId()).isEqualTo(member.getId());
 
-        Assertions.assertThat(findMember.getUsername()).isEqualTo(member.getUsername());
+        Assertions.assertThat(findMember.getName()).isEqualTo(member.getName());
         Assertions.assertThat(findMember).isEqualTo(member); //JPA 엔티티 동일성 보장
     }
 }
