@@ -10,6 +10,8 @@ import org.springframework.transaction.annotation.Transactional;
 import study.querydsl.entity.Hello;
 import study.querydsl.entity.QHello;
 
+import java.util.Objects;
+
 @SpringBootTest
 @Transactional
 class QuerydslApplicationTests {
@@ -27,6 +29,6 @@ class QuerydslApplicationTests {
         Assertions.assertThat(result).isEqualTo(hello);
 
         //lombok 동작 확인 (hello.getId())
-        Assertions.assertThat(result.getId()).isEqualTo(hello.getId());
+        Assertions.assertThat(Objects.requireNonNull(result).getId()).isEqualTo(hello.getId());
     }
 }
