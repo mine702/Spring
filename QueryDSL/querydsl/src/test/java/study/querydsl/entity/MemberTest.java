@@ -1,9 +1,7 @@
 package study.querydsl.entity;
 
-import com.querydsl.jpa.impl.JPAQueryFactory;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Commit;
@@ -45,26 +43,5 @@ public class MemberTest {
         }
     }
 
-    @Test
-    public void startJPQL() {
-        //member1을 찾아라.
-        String qlString = "select m from Member m where m.username = :username";
-        Member findMember = em.createQuery(qlString, Member.class)
-                .setParameter("username", "member1")
-                .getSingleResult();
-        Assertions.assertThat(findMember.getUsername()).isEqualTo("member1");
-    }
-
-    @Test
-    public void startQuerydsl() {
-        //member1을 찾아라.
-        JPAQueryFactory queryFactory = new JPAQueryFactory(em);
-        QMember m = new QMember("m");
-        Member findMember = queryFactory
-                .select(m)
-                .from(m)
-                .where(m.username.eq("member1"))//파라미터 바인딩 처리
-                .fetchOne();
-        Assertions.assertThat(findMember.getUsername()).isEqualTo("member1");
-    }
+    
 }
