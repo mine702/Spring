@@ -12,8 +12,7 @@ public class MemberTeamDto {
     private String teamName;
 
     @QueryProjection
-    public MemberTeamDto(Long memberId, String username, int age, Long teamId,
-                         String teamName) {
+    public MemberTeamDto(Long memberId, String username, int age, Long teamId, String teamName) {
         this.memberId = memberId;
         this.username = username;
         this.age = age;
