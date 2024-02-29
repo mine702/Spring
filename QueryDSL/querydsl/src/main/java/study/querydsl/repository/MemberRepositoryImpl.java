@@ -61,7 +61,7 @@ public class MemberRepositoryImpl implements MemberRepositoryCustom {
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetchResults();
-
+        
         List<MemberTeamDto> content = results.getResults();
         long total = results.getTotal();
         return new PageImpl<>(content, pageable, total);
