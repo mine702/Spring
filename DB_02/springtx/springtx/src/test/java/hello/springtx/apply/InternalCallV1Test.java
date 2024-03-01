@@ -53,8 +53,7 @@ public class InternalCallV1Test {
         }
 
         private void printTxInfo() {
-            boolean txActive =
-                    TransactionSynchronizationManager.isActualTransactionActive();
+            boolean txActive = TransactionSynchronizationManager.isActualTransactionActive();
             log.info("tx active={}", txActive);
         }
     }
