@@ -27,6 +27,7 @@ public class TestDataInit {
         itemRepository.save(new Item("itemG", 20000, 20));
         itemRepository.save(new Item("itemH", 20000, 20));
         itemRepository.save(new Item("itemI", 20000, 20));
+        dld;asdlfkjmnvzapfojpzmvxasfdwerwerdsfvzxc
     }
 
 }
