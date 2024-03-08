@@ -2,7 +2,7 @@ package sample.cafekiosk.spring.domain.product;
 
 import jakarta.persistence.*;
 import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import sample.cafekiosk.spring.domain.BaseEntity;
@@ -10,7 +10,6 @@ import sample.cafekiosk.spring.domain.BaseEntity;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@AllArgsConstructor
 public class Product extends BaseEntity {
 
     @Id
@@ -28,4 +27,13 @@ public class Product extends BaseEntity {
     private String name;
 
     private int price;
+
+    @Builder
+    public Product(String productNumber, ProductType type, ProductSellingStatus sellingStatus, String name, int price) {
+        this.productNumber = productNumber;
+        this.type = type;
+        this.sellingStatus = sellingStatus;
+        this.name = name;
+        this.price = price;
+    }
 }
