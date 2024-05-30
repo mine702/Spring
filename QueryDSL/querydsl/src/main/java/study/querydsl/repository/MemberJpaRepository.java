@@ -14,10 +14,10 @@ import study.querydsl.entity.Member;
 import java.util.List;
 import java.util.Optional;
 
+import static io.micrometer.common.util.StringUtils.isEmpty;
 import static org.springframework.util.StringUtils.hasText;
 import static study.querydsl.entity.QMember.member;
 import static study.querydsl.entity.QTeam.team;
-import static sun.util.locale.LocaleUtils.isEmpty;
 
 @Repository
 @RequiredArgsConstructor
