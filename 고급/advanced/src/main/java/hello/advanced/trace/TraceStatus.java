@@ -1,5 +1,8 @@
 package hello.advanced.trace;
 
+import lombok.Getter;
+
+@Getter
 public class TraceStatus {
     private final TraceId traceId;
     private final Long startTimeMs;
@@ -11,15 +14,4 @@ public class TraceStatus {
         this.message = message;
     }
 
-    public Long getStartTimeMs() {
-        return startTimeMs;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public TraceId getTraceId() {
-        return traceId;
-    }
 }
