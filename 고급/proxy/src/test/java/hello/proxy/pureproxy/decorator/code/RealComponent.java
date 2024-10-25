@@ -6,7 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 public class RealComponent implements Component {
     @Override
     public String operation() {
-        log.info("RealComponent 실행");
-        return "data";
+        log.info("RealComponent operation 호출");
+        return "DATA";
     }
 }
