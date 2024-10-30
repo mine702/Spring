@@ -8,8 +8,7 @@ public class OrderRepositoryConcreteProxy extends OrderRepositoryV2 {
     private final OrderRepositoryV2 target;
     private final LogTrace logTrace;
 
-    public OrderRepositoryConcreteProxy(OrderRepositoryV2 target, LogTrace
-            logTrace) {
+    public OrderRepositoryConcreteProxy(OrderRepositoryV2 target, LogTrace logTrace) {
         this.target = target;
         this.logTrace = logTrace;
     }
