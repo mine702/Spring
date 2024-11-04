@@ -15,8 +15,7 @@ public class TimeMethodInterceptor implements MethodInterceptor {
     }
 
     @Override
-    public Object intercept(Object obj, Method method, Object[] args,
-                            MethodProxy proxy) throws Throwable {
+    public Object intercept(Object obj, Method method, Object[] args, MethodProxy proxy) throws Throwable {
         log.info("TimeProxy 실행");
         long startTime = System.currentTimeMillis();
         Object result = proxy.invoke(target, args);
