@@ -10,13 +10,13 @@ import org.aspectj.lang.annotation.Pointcut;
 @Aspect
 public class AspectV4Pointcut {
 
-    @Around("allOrder()")
+    @Around("hello.aop.order.aop.Pointcuts.allOrder()")
     public Object doLog(ProceedingJoinPoint joinPoint) throws Throwable {
         log.info("[log] {}", joinPoint.getSignature());
         return joinPoint.proceed();
     }
 
-    @Around("allOrder() && allService()")
+    @Around("hello.aop.order.aop.Pointcuts.orderAndService()")
     public Object doTransaction(ProceedingJoinPoint joinPoint) throws Throwable {
         try{
             log.info("[트랜잭션 시작] {}", joinPoint.getSignature());
